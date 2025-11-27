@@ -11,7 +11,7 @@
 
         <div class="cabecera">
             <div class="brand">
-                <h1>CM</h1>
+                <a href="index.html"><h1>CM</h1></a>
             </div>
             <div class="navbar">
                 <div class="toolbar">
@@ -37,8 +37,8 @@
                         <input type="password" name="contrasena" id="contrasena_input">
                     </div>
                     <div>
-                        <button>Iniciar Sesión</button>
-                        <button>Cancelar</button>
+                        <button onclick="iniciarSesion()">Iniciar Sesión</button>
+                        <button onclick="limpiarCampos()">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
 
     </div>
 
-
+    <script src="../controllers/controller.js"></script>
     
 </body>
 </html>
