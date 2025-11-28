@@ -34,3 +34,24 @@ function limpiarCampos() {
     document.getElementById('correo_input').value = '';
     document.getElementById('contrasena_input').value = '';
 }
+
+function subirArchivo(event) {
+    const archivo = event.target.files[0];
+    if (archivo) {
+        document.getElementById("archivoNombre").textContent ="Archivo: " + archivo.name;
+    }
+}
+
+function descargarArchivo() {
+    const contenido =
+        "Este es un archivo de ejemplo.\nPuedes reemplazar este texto por el contenido real.";
+    const blob = new Blob([contenido], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tarea_ejemplo.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}

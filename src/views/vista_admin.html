@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador</title>
+    <link rel="stylesheet" href="../static/css/vistas.css">
+    <link rel="stylesheet" href="../static/css/index.css">
 </head>
 <body>
     
@@ -12,7 +14,7 @@
         <div class="cabecera">
             <div class="brand">
                 <a href="index.html">
-                    <h1>CM</h1>
+                    <h1>Crecer Mas</h1>
                 </a>
             </div>
             <div class="navbar">
@@ -26,6 +28,7 @@
         </div>
     
         <div class="board">
+
             <div class="side_bar">
                 <div class="side_menu">
                     <a href="">Inicio</a>
@@ -34,12 +37,86 @@
                     <a href="">Herramientas</a>
                 </div>
             </div>
+
             <div class="focus">
-    
+            
+                <div class="welcome_panel">
+                    <h2>Bienvenido, Administrador</h2>
+                    <h3>Gestión de cursos</h3>
+                </div>
+            
+                <!-- Botón para crear curso -->
+                <div style="padding:10px;">
+                    <button onclick="mostrarModalCrearCurso()">Crear curso</button>
+                </div>
+            
+                <!-- Lista de cursos -->
+                <div id="cursosList" style="padding:10px; display: grid; gap:10px;">
+                    <!-- cursos renderizados aquí -->
+                </div>
+            
+                <!-- Modal crear curso -->
+                <div id="modalCrearCurso" class="modal" style="display:none;">
+                    <div class="modal_content">
+                        <h3>Crear curso</h3>
+            
+                        <label>Nombre del curso</label>
+                        <input id="curso_nombre" type="text" />
+            
+                        <label>Código</label>
+                        <input id="curso_codigo" type="text" />
+            
+                        <label>Categoría</label>
+                        <input id="curso_categoria" type="text" />
+            
+                        <label>Fecha inicio</label>
+                        <input id="curso_inicio" type="date" />
+            
+                        <label>Fecha término</label>
+                        <input id="curso_termino" type="date" />
+            
+                        <div class="modal_actions">
+                            <button onclick="crearCurso()">Crear</button>
+                            <button onclick="cerrarModalCrearCurso()">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Modal asignar estudiantes -->
+                <div id="modalAsignar" class="modal" style="display:none;">
+                    <div class="modal_content">
+                        <h3>Asignar estudiantes</h3>
+                
+                        <label>Nombre</label>
+                        <input id="inputEstNombre" type="text" />
+                
+                        <label>RUT</label>
+                        <input id="inputEstRut" type="text" />
+                
+                        <label>Correo</label>
+                        <input id="inputEstCorreo" type="email" />
+                
+                        <div style="margin-top:8px;">
+                            <button id="btnAgregarEst" onclick="agregarEstudianteTemporal()">Agregar estudiante</button>
+                        </div>
+                
+                        <h4 style="margin-top:12px;">Estudiantes a asignar</h4>
+                        <ul id="listaTempEstudiantes" style="max-height:160px; overflow:auto; padding-left:18px;"></ul>
+                
+                        <div class="modal_actions" style="margin-top:10px;">
+                            <button id="btnAsignarConfirm" onclick="">Asignar al curso</button>
+                            <button onclick="cerrarModalAsignar()">Cerrar</button>
+                        </div>
+                
+                        <h4 style="margin-top:12px;">Estudiantes ya asignados</h4>
+                        <ul id="listaAsignados"></ul>
+                    </div>
+                </div>
+            
             </div>
-            <div class="info">
-    
-            </div>
+
+
+
         </div>
     
         <div class="footer">
@@ -49,6 +126,9 @@
         </div>
     
     </div>
+    
+    <script src="../controllers/controller.js"></script>
+    <script src="../controllers/manejar_cursos.js"></script>
 
 </body>
 </html>

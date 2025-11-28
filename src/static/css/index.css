@@ -15,6 +15,14 @@ html, body {
     width: 10%;
     text-align: center;
 }
+
+.brand a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 .navbar {
     display: flex;
     flex-grow: 1;

@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesor</title>
+    <link rel="stylesheet" href="../static/css/vistas.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/asistencia.css">
 </head>
+
 <body>
     
     <div class="cuerpo">
@@ -12,7 +16,7 @@
         <div class="cabecera">
             <div class="brand">
                 <a href="index.html">
-                    <h1>CM</h1>
+                    <h1>Crecer Mas</h1>
                 </a>
             </div>
             <div class="navbar">
@@ -35,11 +39,78 @@
                 </div>
             </div>
             <div class="focus">
+                <div class="welcome_panel">
+                    <h2>Bienvenido, Profesor</h2>
+                    <h3>Programación Web I / CURS-001</h3>
+                </div>
+    
+                <div class="tarea">
+                    <div class="detalles">
+                        <h3>Tarea 1: Informe</h3>
+                        <p>Fecha de entrega: 28/11/2025</p>
+                    </div>
+                    <div class="subir_archivo">
+                        <span id="archivoNombre">Descargar archivo de ejemplo</span>
+                        <button onclick="descargarArchivo()">Descargar .txt</button>
+                    </div>
+                    <div class="calificacion">
+                        <span id="gradeDisplay">Calificación: --</span>
+                        <button onclick="mostrarModalCalificacion()">Asignar calificación</button>
+                    </div>
+                </div>
     
             </div>
+
             <div class="info">
-    
+
+                <button onclick="mostrarModalAsistencia()">Gestionar asistencia</button>
+            
+                <!-- Modal de asistencia -->
+                <div id="modalAsistencia" class="modal" style="display:none;">
+                    <div class="modal_content">
+                        <h3>Asignar asistencia</h3>
+                        <label for="selectEstudiante">Estudiante:</label>
+                        <select id="selectEstudiante"></select>
+            
+                        <label for="selectEstado">Estado:</label>
+                        <select id="selectEstado">
+                            <option value="Presente">Presente</option>
+                            <option value="Ausente">Ausente</option>
+                            <option value="Tarde">Tarde</option>
+                        </select>
+            
+                        <div class="modal_actions">
+                            <button onclick="asignarAsistencia()">Asignar</button>
+                            <button onclick="cerrarModalAsistencia()">Cerrar</button>
+                        </div>
+            
+                        <h4>Registro</h4>
+                        <ul id="asistenciaLista"></ul>
+                    </div>
+                </div>
+
+                <div id="modalCalificacion" class="modal" style="display:none;">
+                    <div class="modal_content">
+                        <h3>Asignar calificación</h3>
+                
+                        <label for="selectEstCal">Estudiante:</label>
+                        <select id="selectEstCal"></select>
+                
+                        <label for="inputCalificacion">Calificación:</label>
+                        <input id="inputCalificacion" type="number" min="1.0" max="7.0" step="0.1" />
+                
+                        <div class="modal_actions">
+                            <button onclick="asignarCalificacion()">Asignar</button>
+                            <button onclick="cerrarModalCalificacion()">Cerrar</button>
+                        </div>
+                
+                        <h4>Registro de calificaciones</h4>
+                        <ul id="calificacionesLista"></ul>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     
         <div class="footer">
@@ -49,6 +120,9 @@
         </div>
     
     </div>
+    
+    <script src="../controllers/controller.js"></script>
+    <script src="../controllers/asistencia.js"></script>
 
 </body>
 </html>
